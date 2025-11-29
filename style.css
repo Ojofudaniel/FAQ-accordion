@@ -90,3 +90,23 @@ body {
 }
 
 /* RESPONSIVE DESIGN */
+@media (max-width: 630px) {
+  .main-body {
+    width: 50rem;
+  }
+
+  .main-header {
+    background-image: url(assets/images/background-pattern-mobile.svg);
+  }
+}
+
+@media (max-width: 520px) {
+  .main-body {
+    width: 40rem;
+  }
+}
+@media (max-width: 420px) {
+  .main-body {
+    width: 35rem;
+  }
+}
