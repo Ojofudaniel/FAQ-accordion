@@ -7,18 +7,25 @@ const plusIconEl = document.querySelectorAll(".plus-icon-img");
 const plusIcon = "assets/images/icon-plus.svg";
 const minusIcon = "assets/images/icon-minus.svg";
 
-console.log(showAnswer);
-console.log(clickableEl);
-console.log(plusIconEl);
+const toggleFAQ = function (i) {
+  showAnswer[i].classList.toggle("hidden");
+  plusIconEl[i].src = showAnswer[i].classList.contains("hidden")
+    ? "assets/images/icon-plus.svg"
+    : "assets/images/icon-minus.svg";
+};
 
-for (let i = 0; i < clickableEl.length; i++) {
-  clickableEl[i].addEventListener("click", function () {
-    showAnswer[i].classList.toggle("hidden");
+clickableEl.forEach((el, i) => {
+  // Navigation using mouse
+  el.addEventListener("click", function () {
+    toggleFAQ(i);
+  });
 
-    if (showAnswer[i].classList.contains("hidden")) {
-      plusIconEl[i].src = plusIcon; // FAQ hidden → show plus icon
-    } else {
-      plusIconEl[i].src = minusIcon; // FAQ shown → show minus icon
+  // Keyboard Navigation
+  el.addEventListener("keydown", function (event) {
+    if (event.key === " " || event.key === "Enter") {
+      event.preventDefault(); // prevent scrolling for Space
+
+      toggleFAQ(i);
     }
   });
-}
+});
